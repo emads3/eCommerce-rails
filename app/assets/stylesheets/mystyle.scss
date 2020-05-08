@@ -6,3 +6,30 @@
     color: #fff;
 
 }
+.navbar{
+    margin-bottom: 0;
+}
+
+.UserHeader,.GuestHeader{
+padding-top:15px;
+}
+
+.UserHeader a:hover,.GuestHeader a:hover{
+    background-color: #fff;
+}
+
+.container-fluid{
+    padding: 40px 65px;
+}
+
+.cat{
+    background: #fff;
+    padding: 0;
+    // border-radius: 5px;
+    box-shadow: 1px 0px 0px black;}
+
+.cat:hover{
+
+    // border-radius: 5px;
+    box-shadow: 0px 0px;
+}

@@ -11,7 +11,24 @@
 	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
  	          <li class="nav-item"><a href="carat.html" class="nav-link">Cart</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+				<div class="nav-item ">
+				<% if user_signed_in? %>
+				<div class="UserHeader">
+				<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+				<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+				</div>
+				<% else %>
+				<div class="GuestHeader">
+				<li class="nav-item">
+				<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+				<%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+				</div>
+				<% end %>
+				</div>
  	        </ul>
+
+			 
+			 
 	      </div>
 	    </div>
 	  </nav>
