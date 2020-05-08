@@ -26,10 +26,40 @@ padding-top:15px;
     background: #fff;
     padding: 0;
     // border-radius: 5px;
-    box-shadow: 1px 0px 0px black;}
+    box-shadow: 1px 0px 0px rgb(41, 38, 38);}
 
 .cat:hover{
 
     // border-radius: 5px;
     box-shadow: 0px 0px;
+}
+
+#productImg{
+    max-width: 70%;
+}
+
+.card-container{
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    padding: 15px;
+}
+.cart{
+    background-color: #000;
+    padding: 5px 15px;
+    border-radius: 2px;
+    margin-right: 2rem;
+
+}
+.cart a{
+    all: revert;
+}
+.cart:hover{
+    background-color: #f5cc65;
+
+}
+.product-img:hover{
+    opacity: .4;
+}
+
+.card-body{
+	padding: .3rem 10px;
 }
