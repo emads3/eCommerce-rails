@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  mount_uploaders :avatars, AvatarUploader
+  serialize :avatars, JSON
+  
   belongs_to :category
   belongs_to :brand
   belongs_to :store

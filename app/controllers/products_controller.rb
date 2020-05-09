@@ -30,10 +30,6 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        
-        params [product_img]['image'].each do |img|
-        @product_img = @product.product_imgs.create!(:image => img)
-        end
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
@@ -76,6 +72,6 @@ class ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def product_params
       # params.fetch(:product, {})
-      params.require(:product).permit(:title, :description,:category_id,:store_id,:brand_id, product_img_attributes: [:image])
+      params.require(:product).permit(:title, :description,:category_id,:store_id,:brand_id,{avatars: []})
     end
 end

@@ -13,14 +13,9 @@
 
 
 
-  <%= form.fields_for :product_img do |img| %>
-    <div>
-      <%= img.label :image %>
-      <%= img.file_field :image, :multiple => true %>
-    </div>
-  <% end %>
 
 
+  <%= form.file_field :avatars, multiple: true %>
 
   <div class="field">
     <%= form.label :title %>
