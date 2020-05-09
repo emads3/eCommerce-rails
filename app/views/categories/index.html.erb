@@ -1,0 +1,9 @@
+<div class="col-md-10 cat">
+<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+<% @categories.each do |category| %>
+    
+      <%= link_to category.name, category_path(category) %>
+    
+<% end %> 
+</div>  
+</div> 

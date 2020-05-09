@@ -1,0 +1,19 @@
+<h2>products</h2>
+<%= @brand.name%>
+<% if @brand.products%>
+    <% @brand.products.each do |product| %>
+        <p>
+        <strong>product:</strong>
+        <%= product.title %>
+        </p>
+        <p>
+        <strong>description:</strong>
+        <%= product.description %>
+        </p>
+        <p>
+        <strong>price:</strong>
+        <%= product.price %>
+        </p>
+        <p>
+    <% end %>
+<% end %>    
