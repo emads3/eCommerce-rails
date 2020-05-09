@@ -11,10 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :img %>
-    <%= form.file_field :img %>
-  </div>
+
+
+  <%= form.fields_for :product_img do |img| %>
+    <div>
+      <%= img.label :image %>
+      <%= img.file_field :image, :multiple => true %>
+    </div>
+  <% end %>
+
+
 
   <div class="field">
     <%= form.label :title %>
@@ -25,6 +31,15 @@
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
+
+<%= form.collection_select :category_id, Category.all, :id, :name,prompt: "Select Category" %> 
+
+<%# <<<<<<<<<this is just for basic entry,it needs to be handeled
+ to give the product current user store name >>>>>>>>>>>%>
+
+<%= form.collection_select :store_id, Store.all, :id, :name,prompt: "Select Store" %> 
+
+<%= form.collection_select :brand_id, Brand.all, :id, :name,prompt: "Select Brand" %> 
 
   <div class="actions">
     <%= form.submit %>
