@@ -4,5 +4,6 @@ class Product < ApplicationRecord
   belongs_to :store
   has_many :product_shoppings
   has_many :shopping_carts, :through => :product_shoppings
+  has_many :product_imgs
 
 end
