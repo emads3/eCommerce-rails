@@ -6,6 +6,6 @@ class ApplicationController < ActionController::Base
     
     def render_products
         @products = Product.all
-
     end
+    
 end

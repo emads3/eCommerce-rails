@@ -1,9 +1,16 @@
+ <div class="row mb-2 products">
  <% @products.each do |product| %>
-<div class="col-md-4 card-container">
+<div class="col-md-4  card-container">
     <div class="single-product-wrapper">
         <!-- Product Image -->
         <div class="product-img" >
-            <img class="img-fluid" src="" alt="" id="productImg">
+            
+            <% product.avatars.each_with_index do |avatar, i|%>
+            <% if i == 0 %>
+            <%= image_tag(avatar.url , :class => 'avatar')%>
+            <%end%>
+            <%end%>
+
         </div>
 
         <!-- Product Description -->
@@ -12,7 +19,7 @@
             <div class="product-meta-data">
                 <div class="line"></div>
                 <p class="product-price"> Price </p>
-                    <h6><%= product.name %></h6>
+                    <h6><%= product.title %></h6>
                 
             </div>
             <!-- Cart -->
@@ -25,5 +32,6 @@
     </div>
 </div>
 <% end %>
+</div>
 
 
