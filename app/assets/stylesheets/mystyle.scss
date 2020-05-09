@@ -1,3 +1,8 @@
+body{
+    line-height: 2;
+font-weight: 800;
+}
+
 .ftco-navbar-light .navbar-brand:hover, .ftco-navbar-light .navbar-brand:focus{
     color: #fff;
 }
@@ -24,7 +29,8 @@ padding-top:15px;
 
 .cat{
     background: #fff;
-    padding: 0;
+    padding: 10px 0;
+    margin-bottom: 10px;
     // border-radius: 5px;
     box-shadow: 1px 0px 0px rgb(41, 38, 38);}
 
@@ -80,4 +86,16 @@ margin: 0 auto;
 
 .container-fluid{
     padding:30px 20px;
+}
+#v-pills-tab{
+    width: 100%;
+}
+#v-pills-tab a{
+    padding: 7px;
+
+}
+
+.line{
+    color:#313131 ;
+    font-size: 20px;
 }
