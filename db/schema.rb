@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_09_061138) do
+ActiveRecord::Schema.define(version: 2020_05_09_103017) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -56,9 +56,17 @@ ActiveRecord::Schema.define(version: 2020_05_09_061138) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "create_orders_products", id: false, force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "product_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "state"
   end
 
   create_table "product_imgs", force: :cascade do |t|
@@ -89,10 +97,18 @@ ActiveRecord::Schema.define(version: 2020_05_09_061138) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "store_id"
+    t.integer "seller_id"
     t.string "avatars"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["seller_id"], name: "index_products_on_seller_id"
     t.index ["store_id"], name: "index_products_on_store_id"
+  end
+
+  create_table "sellers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "shopping_carts", force: :cascade do |t|
@@ -126,6 +142,7 @@ ActiveRecord::Schema.define(version: 2020_05_09_061138) do
   add_foreign_key "product_shoppings", "shopping_carts"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
+  add_foreign_key "products", "sellers"
   add_foreign_key "products", "stores"
   add_foreign_key "shopping_carts", "users"
   add_foreign_key "stores", "users"
