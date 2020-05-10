@@ -18,13 +18,14 @@
             <!-- Product Meta Data -->
             <div class="product-meta-data">
                 <div class="line"><%= product.title %></div>
+                
                 <h4><b><%= product.price %></b><span style="color:#ffa45c;font-size:20px"><sub>$<sub></span></h4>
                 
             </div>
             <!-- Cart -->
             <div class="ratings-cart text-right">
                 <div class="cart">
-                    <a style="cursor:pointer;" data-toggle="tooltip" data-placement="left" title="Add to Cart"><%= image_tag ("bag.png")%></a>
+                    <a style="cursor:pointer;"  href="/shopping_carts/<%= product.id %>" data-placement="left" title="Add to Cart"><%= image_tag ("bag.png")%></a>
                 </div>
             </div>
         </div>

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
   get 'home/index'
+  get 'shopping_carts/:product' , to:'shopping_carts#index'
+  get 'shopping_carts/create' , to:'shopping_carts#create'
   resources :categories
   resources :brands
   resources :products
