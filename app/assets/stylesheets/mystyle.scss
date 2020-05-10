@@ -1,6 +1,11 @@
 body{
     line-height: 2;
-font-weight: 800;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+a:visited{
+    color: #ffffff;
 }
 
 .ftco-navbar-light .navbar-brand:hover, .ftco-navbar-light .navbar-brand:focus{
@@ -95,7 +100,121 @@ margin: 0 auto;
 
 }
 
-.line{
+.product-name{
     color:#313131 ;
     font-size: 20px;
 }
+
+.single-product-wrapper{
+    position: relative;
+    z-index: 1;
+    margin-bottom: 50px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.single-product-wrapper .product-description {
+    position: relative;
+    z-index: 1;
+    margin-top: 25px;
+}
+.single-product-wrapper .product-description .product-meta-data .line {
+    width: 80px;
+    height: 3px;
+    background-color: #313131;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.single-product-wrapper .product-description .product-meta-data .product-price {
+    line-height: 1;
+    color: #313131;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.ftco-navbar-light .navbar-nav > .nav-item .dropdown-menu{
+    color: #fff;
+    font-size: 12px;
+    background-color: black;
+    width: 100%;
+}
+
+.ftco-navbar-light .navbar-nav > .nav-item .dropdown-menu:hover{
+    background-color: #fff;
+}
+
+.ftco-navbar-light .navbar-nav > .nav-item .dropdown-menu a:visited{
+    color: #fff
+}
+
+.page {
+    background-color: black;
+    width: 30px;
+    text-align: center;
+    border-radius: 50%;
+    margin: 0 10px;
+ }
+ .paginator li{
+    list-style: none;
+
+ }
+ .paginator ul {
+     list-style: none;
+     flex-direction: row;
+     display: flex;
+     font-size: 12px;
+     padding: 0 250px;
+
+ }
+ .page-link{
+    font-size: 12px;
+    background-color: #000;
+    color: #000;
+    border-radius: 50%;
+    border-style: none;
+    margin: 10px 15px;
+    width: 27px;
+    text-align: center;
+    border-color: #000;
+
+ }
+
+ .page-link:hover{
+    background-color: #fff;
+    color: #000;
+    border-style: solid;
+
+ }
+
+
+ .page-link .current{
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+ }
+
+ .last{
+     width: 50px;
+     padding: 10px;
+     margin: 10px;
+     background-color: #000;
+     color: #ffffff;
+     border-radius: 5px;
+     font-size: 11px;
+     position: relative;
+     left: 100%;
+ }
+
+ .first{
+    width: 50px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #000;
+    color: #ffffff;
+    border-radius: 5px;
+    font-size: 11px;
+    position: relative;
+    right: 0%;
+}
+
+

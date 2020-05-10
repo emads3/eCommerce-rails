@@ -1,9 +1,13 @@
+
  <div class="row mb-2 products">
+ 
+
  <% @products.each do |product| %>
-<div class="col-md-3  card-container">
+ 
+<div class="col card-container">
     <div class="single-product-wrapper">
         <!-- Product Image -->
-        <div class="product-img" >
+        <div class="product-img img-fluid" >
             
             <% product.avatars.each_with_index do |avatar, i|%>
             <% if i == 0 %>
@@ -17,10 +21,15 @@
         <div class="product-description d-flex align-items-center justify-content-between">
             <!-- Product Meta Data -->
             <div class="product-meta-data">
+
                 <div class="line"><%= product.title %></div>
                 
                 <h4><b><%= product.price %></b><span style="color:#ffa45c;font-size:20px"><sub>$<sub></span></h4>
-                
+
+                <div class="line"></div>
+                <p class="product-price"> <%= product.price %> <span style="font-size:17px;color:#ffa45c">$<span></span></span></p>
+                <div class="product-name"><%= product.title %></div>
+
             </div>
             <!-- Cart -->
             <div class="ratings-cart text-right">
@@ -32,6 +41,10 @@
     </div>
 </div>
 <% end %>
+
+</div>
+<div class="row paginator">
+<%= paginate @products %>
 </div>
 
 
