@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 2020_05_10_051601) do
     t.integer "brand_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "store_id"
     t.string "avatars"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
