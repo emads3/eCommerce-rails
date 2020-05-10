@@ -127,3 +127,19 @@ margin: 0 auto;
     font-size: 24px;
     margin-bottom: 10px;
 }
+.ftco-navbar-light .navbar-nav > .nav-item .dropdown-menu{
+    color: #fff;
+    font-size: 12px;
+    background-color: black;
+    width: 100%;
+}
+
+.ftco-navbar-light .navbar-nav > .nav-item .dropdown-menu:hover{
+    background-color: #fff;
+}
+
+.ftco-navbar-light .navbar-nav > .nav-item .dropdown-menu a:visited{
+    color: #fff
+}
+
+
