@@ -40,6 +40,10 @@
 <%= form.collection_select :store_id, Store.all, :id, :name,prompt: "Select Store" %> 
 
 <%= form.collection_select :brand_id, Brand.all, :id, :name,prompt: "Select Brand" %> 
+<%# <%= form.collection_select :user_id, User.where.not(is_seller: [ ""]) , :id, :email, prompt: "Select Seller"%> 
+<%= form.collection_select :user_id , User.all , :id, :email , prompt: "Select Seller"  %>%
+   <%# <% form.hidden_field(:hidden_value, :value=> session[:current_user_id] )%> 
+
 
   <div class="actions">
     <%= form.submit %>
