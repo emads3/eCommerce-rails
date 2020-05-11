@@ -1,10 +1,13 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :products
+
   # GET /products
   # GET /products.json
   def index
     # @products = Product.all
     @products = Product.order(:name).page(params[:page]).per(10)
+    # authorize! :manage, @products
 
   end
 
@@ -27,6 +30,8 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    authorize! :manage, @product
+
     @product = Product.new(product_params)
 
     respond_to do |format|
@@ -39,6 +44,7 @@ class ProductsController < ApplicationController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /products/1
