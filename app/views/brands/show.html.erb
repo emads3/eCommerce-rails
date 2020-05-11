@@ -1,0 +1,48 @@
+ 
+<div class="row mb-2 products">
+<h2>products</h2>
+<% if @brand.products%>
+<% @brand.products.each do |product| %>
+
+<div class="card-container">
+   <div class="single-product-wrapper">
+       <!-- Product Image -->
+       <div class="product-img img-fluid" >
+           
+           <% product.avatars.each_with_index do |avatar, i|%>
+           <% if i == 0 %>
+           <%= image_tag(avatar.url , :class => 'avatar')%>
+           <%end%>
+           <%end%>
+
+       </div>
+
+       <!-- Product Description -->
+       <div class="product-description d-flex align-items-center justify-content-between">
+           <!-- Product Meta Data -->
+           <div class="product-meta-data">
+
+               
+               <div class="line"></div>
+               <p class="product-price"> <%= product.price %> <span style="font-size:17px;color:#ffa45c">$<span></span></span></p>
+               <div class="product-name"><%= product.title %></div>
+
+           </div>
+           <!-- Cart -->
+           <div class="ratings-cart text-right">
+               <div class="cart">
+                   <a style="cursor:pointer;"  href="/shopping_carts/<%= product.id %>" data-placement="left" title="Add to Cart"><%= image_tag ("bag.png")%></a>
+               </div>
+           </div>
+       </div>
+   </div>
+</div>
+<% end %>
+<% end %>
+
+</div>
+<div class="row paginator">
+<%= paginate @products %>
+</div>
+
+

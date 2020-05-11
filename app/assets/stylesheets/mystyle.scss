@@ -1,3 +1,10 @@
+body{
+    line-height: 2;
+    font-weight: 800;
+}
+
+
+
 .ftco-navbar-light .navbar-brand:hover, .ftco-navbar-light .navbar-brand:focus{
     color: #fff;
 }
@@ -24,7 +31,8 @@ padding-top:15px;
 
 .cat{
     background: #fff;
-    padding: 0;
+    padding: 10px 0;
+    margin-bottom: 10px;
     // border-radius: 5px;
     box-shadow: 1px 0px 0px rgb(41, 38, 38);}
 
@@ -35,7 +43,7 @@ padding-top:15px;
 }
 
 #productImg{
-    max-width: 70%;
+    max-width: 50%;
 }
 
 .card-container{
@@ -59,7 +67,148 @@ padding-top:15px;
 .product-img:hover{
     opacity: .4;
 }
-
+.product-img{
+overflow: hidden;
+max-width: 350px;
+}
 .card-body{
 	padding: .3rem 10px;
 }
+
+.avatar{
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+
+.card-container{
+    margin: 10px;
+}
+.products{
+margin: 0 auto;
+}
+
+.container-fluid{
+    padding:30px 20px;
+}
+#v-pills-tab{
+    width: 100%;
+}
+#v-pills-tab a{
+    padding: 7px;
+
+}
+
+.product-name{
+    color:#313131 ;
+    font-size: 20px;
+}
+
+.single-product-wrapper{
+    position: relative;
+    z-index: 1;
+    margin-bottom: 50px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+.single-product-wrapper .product-description {
+    position: relative;
+    z-index: 1;
+    margin-top: 25px;
+}
+.single-product-wrapper .product-description .product-meta-data .line {
+    width: 80px;
+    height: 3px;
+    background-color: #313131;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.single-product-wrapper .product-description .product-meta-data .product-price {
+    line-height: 1;
+    color: #313131;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.ftco-navbar-light .navbar-nav > .nav-item .dropdown-menu{
+    color: #fff;
+    font-size: 12px;
+    background-color: black;
+    width: 100%;
+}
+
+.ftco-navbar-light .navbar-nav > .nav-item .dropdown-menu:hover{
+    background-color: #fff;
+}
+
+.ftco-navbar-light .navbar-nav > .nav-item .dropdown-menu a:visited{
+    
+    color: #fff
+}
+
+.pagination > li > a{
+    color: #ffffff;
+    background-color: #000;
+}
+.pagination > li > a:hover{
+    color: #000;
+}
+
+.avatarCart{
+    max-width: 150px;
+
+}
+
+
+.cart-summary{
+    background-color: #f5f7fa;
+    margin-top: 70px;
+    padding: 30px 20px;
+    color: #666;
+}
+ .cart-summary h5 {
+    font-size: 18px;
+    margin-bottom: 0;
+    color: #666;
+ }
+ .cart-summary .summary-table {
+    margin-top: 30px;
+    font-size: 16px;
+    padding-left: 20px;
+    color: #666;
+}
+
+.mt-100 {
+    margin-top: 100px !important;
+}
+
+.amado-btn {
+    display: inline-block;
+    min-width: 160px;
+    height: 55px;
+    color: #ffffff;
+    border: none;
+    border-radius: 0;
+    padding: 0 7px;
+    font-size: 18px;
+    line-height: 56px;
+    background-color: #000;
+    font-weight: 400;
+}
+
+.amado-btn:hover{
+    color: #ffa45c;
+}
+
+.summary-table li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    text-transform: capitalize;
+}
+
+

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<% @product.avatars.each do |avatar|%>
+  <%= image_tag(avatar.url)%>
+
+<%end%>
+<p>
+  <strong>Title:</strong>
+  <%= @product.title %>
+</p>
+
+
+<p>
+  <strong>description</strong>
+  <%= @product.description %>
+</p>
+ 
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

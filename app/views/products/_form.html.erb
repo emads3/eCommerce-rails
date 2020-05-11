@@ -1,0 +1,47 @@
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+
+  <%= form.file_field :avatars, multiple: true %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+    <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price,:step => 0.01 %>
+  </div>
+
+<%= form.collection_select :category_id, Category.all, :id, :name,prompt: "Select Category" %> 
+
+<%# <<<<<<<<<this is just for basic entry,it needs to be handeled
+ to give the product current user store name >>>>>>>>>>>%>
+
+<%= form.collection_select :store_id, Store.all, :id, :name,prompt: "Select Store" %> 
+
+<%= form.collection_select :brand_id, Brand.all, :id, :name,prompt: "Select Brand" %> 
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
