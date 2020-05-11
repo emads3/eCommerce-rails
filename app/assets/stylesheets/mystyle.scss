@@ -1,7 +1,6 @@
 body{
     line-height: 2;
     font-weight: 800;
-    color: #ffffff;
 }
 
 
@@ -44,7 +43,7 @@ padding-top:15px;
 }
 
 #productImg{
-    max-width: 70%;
+    max-width: 50%;
 }
 
 .card-container{
@@ -70,6 +69,7 @@ padding-top:15px;
 }
 .product-img{
 overflow: hidden;
+max-width: 350px;
 }
 .card-body{
 	padding: .3rem 10px;
@@ -142,77 +142,73 @@ margin: 0 auto;
 }
 
 .ftco-navbar-light .navbar-nav > .nav-item .dropdown-menu a:visited{
+    
     color: #fff
 }
 
-.page {
-    background-color: black;
-    width: 30px;
-    text-align: center;
-    border-radius: 50%;
-    margin: 0 10px;
- }
- .paginator li{
-    list-style: none;
-
- }
- .paginator ul {
-     list-style: none;
-     flex-direction: row;
-     display: flex;
-     font-size: 12px;
-     padding: 0 250px;
-
- }
- .page-link{
-    font-size: 12px;
-    background-color: #000;
-    color: #000;
-    border-radius: 50%;
-    border-style: none;
-    margin: 10px 15px;
-    width: 27px;
-    text-align: center;
-    border-color: #000;
-
- }
-
- .page-link:hover{
-    background-color: #fff;
-    color: #000;
-    border-style: solid;
-
- }
-
-
- .page-link .current{
-    background-color: #fff;
-    color: #000;
-    border-color: #000;
- }
-
- .last{
-     width: 50px;
-     padding: 10px;
-     margin: 10px;
-     background-color: #000;
-     color: #ffffff;
-     border-radius: 5px;
-     font-size: 11px;
-     position: relative;
-     left: 100%;
- }
-
- .first{
-    width: 50px;
-    padding: 10px;
-    margin: 10px;
-    background-color: #000;
+.pagination > li > a{
     color: #ffffff;
-    border-radius: 5px;
-    font-size: 11px;
-    position: relative;
-    right: 0%;
+    background-color: #000;
+}
+.pagination > li > a:hover{
+    color: #000;
+}
+
+.avatarCart{
+    max-width: 150px;
+
+}
+
+
+.cart-summary{
+    background-color: #f5f7fa;
+    margin-top: 70px;
+    padding: 30px 20px;
+    color: #666;
+}
+ .cart-summary h5 {
+    font-size: 18px;
+    margin-bottom: 0;
+    color: #666;
+ }
+ .cart-summary .summary-table {
+    margin-top: 30px;
+    font-size: 16px;
+    padding-left: 20px;
+    color: #666;
+}
+
+.mt-100 {
+    margin-top: 100px !important;
+}
+
+.amado-btn {
+    display: inline-block;
+    min-width: 160px;
+    height: 55px;
+    color: #ffffff;
+    border: none;
+    border-radius: 0;
+    padding: 0 7px;
+    font-size: 18px;
+    line-height: 56px;
+    background-color: #000;
+    font-weight: 400;
+}
+
+.amado-btn:hover{
+    color: #ffa45c;
+}
+
+.summary-table li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    text-transform: capitalize;
 }
 
 

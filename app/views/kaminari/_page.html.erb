@@ -1,6 +1,6 @@
 <% if page.current? %>
   <li>
-    <%= content_tag :a, page, remote: remote, rel: (page.next? ? 'next' : (page.prev? ? 'prev' : nil)), class: "current page-link" %>
+    <%= content_tag :a, page, remote: remote, rel: (page.next? ? 'next' : (page.prev? ? 'prev' : nil)), class: "current page-item" %>
   </li>
 <% else %>
   <li>

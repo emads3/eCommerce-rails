@@ -1,7 +1,8 @@
 <%= paginator.render do -%>
-      <div class="col-md-2"><%= first_page_tag unless current_page.first? %></div>
         <div class="col-md-7">
-        <ul>
+        <ul class="pagination justify-content-center">
+        <%= prev_page_tag unless current_page.first? %>
+        <%= first_page_tag unless current_page.first? %>
           <% each_page do |page| -%>
             <% if page.left_outer? || page.right_outer? || page.inside_window? -%>
               <%= page_tag page %>
@@ -9,9 +10,9 @@
               <%= gap_tag %>
             <% end -%>
           <% end -%>
+         <%= next_page_tag unless current_page.last? %>
+         <%= last_page_tag unless current_page.last? %>
+
         </ul>
-      </div>
-      <div class="col-md-2">
-        <%= last_page_tag unless current_page.last? %>
       </div>
 <% end -%>
