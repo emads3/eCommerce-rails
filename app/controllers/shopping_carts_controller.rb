@@ -23,10 +23,12 @@ class ShoppingCartsController < ApplicationController
         @shopping_cart=ShoppingCart.find_by user_id: current_user.id
         @shopping_cart = @shopping_cart.product_shoppings.find_by product_id: params[:product]
         @product=Product.find(params[:product])
-        if @product.stock_quantity > 0
-            @shopping_cart.destroy
+        if @product.stock_quantity
+            if @product.stock_quantity > 0
+                 @shopping_cart.destroy
+            end
+        
         end
-        # redirect_to products_path
         redirect_to action: 'show'
     end   
     def show
