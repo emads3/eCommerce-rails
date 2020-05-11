@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2020_05_10_211337) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "state"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "orders_products", id: false, force: :cascade do |t|
@@ -129,6 +131,7 @@ ActiveRecord::Schema.define(version: 2020_05_10_211337) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "orders", "users"
   add_foreign_key "product_imgs", "products"
   add_foreign_key "product_shoppings", "products"
   add_foreign_key "product_shoppings", "shopping_carts"
