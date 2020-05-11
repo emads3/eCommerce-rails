@@ -25,6 +25,7 @@ gem 'activeadmin'
 gem 'devise'
 gem 'kaminari'
 gem 'font-awesome-sass'
+gem 'cancancan'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
