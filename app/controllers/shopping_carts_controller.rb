@@ -4,8 +4,8 @@ class ShoppingCartsController < ApplicationController
         @shopping_cart.save
         
         @shopping_cart.product_shoppings.create(:product_id => params[:product])
-       
-        @shopping_carts=ShoppingCart.all
+        @shopping_carts = ShoppingCart.order(:name).page(params[:page]).per(5)
+
        
       
     end  

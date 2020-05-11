@@ -4,7 +4,7 @@
 
  <% @products.each do |product| %>
  
-<div class="col card-container">
+<div class="card-container">
     <div class="single-product-wrapper">
         <!-- Product Image -->
         <div class="product-img img-fluid" >
@@ -22,10 +22,7 @@
             <!-- Product Meta Data -->
             <div class="product-meta-data">
 
-                <div class="line"><%= product.title %></div>
                 
-                <h4><b><%= product.price %></b><span style="color:#ffa45c;font-size:20px"><sub>$<sub></span></h4>
-
                 <div class="line"></div>
                 <p class="product-price"> <%= product.price %> <span style="font-size:17px;color:#ffa45c">$<span></span></span></p>
                 <div class="product-name"><%= product.title %></div>
