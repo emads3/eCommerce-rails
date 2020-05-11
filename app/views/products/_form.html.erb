@@ -31,6 +31,10 @@
     <%= form.label :price %>
     <%= form.number_field :price,:step => 0.01 %>
   </div>
+   <div class="field">
+    <%= form.label :Quantity %>
+    <%= form.number_field :stock_quantity %>
+  </div>
 
 <%= form.collection_select :category_id, Category.all, :id, :name,prompt: "Select Category" %> 
 

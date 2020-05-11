@@ -86,7 +86,6 @@ class ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def product_params
       # params.fetch(:product, {})
-      session[:user_id] = :user_id  
-         params.require(:product).permit(:title, :description,:category_id,:store_id,:user_id ,:brand_id,:price,{avatars: []})
+         params.require(:product).permit(:title, :description,:category_id,:store_id,:user_id ,:brand_id,:price, :stock_quantity,{avatars: []})
     end
 end
