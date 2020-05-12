@@ -49,6 +49,12 @@
 
 <h3>Price: <span style="color:#ffa45c;">$</span><%=@product.price%></h3>
 
+<%if @product.stock_quantity > 0%>
+<h4>Available: <span style="color:#ffa45c;"><%=@product.stock_quantity%></span></h4>
+
+<%else%>
+<h4 style="color:#ffa45c;"> <span >Out of stock</h4>
+<%end%>
 <p>Brand: <span style="color:#ffa45c;"><%= link_to @product.brand.name,@product.brand%></span></br>
 Store: <span style="color:#ffa45c;"><%=@product.store.name%></span>
 <p>
