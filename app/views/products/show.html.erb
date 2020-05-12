@@ -1,5 +1,10 @@
 
 
+<% if can? :manage, @product %>
+<%= link_to 'Edit', edit_product_path(@product) %>
+<% end %>
+
+<%= link_to 'Back', products_path %>
 
 
 <div id="carouselExampleIndicators" class="carousel slide w-70" data-ride="carousel">
@@ -59,13 +64,16 @@
 Store: <span style="color:#ffa45c;"><%=@product.store.name%></span>
 <p>
 
+<% if @product.stock_quantity > 0 %>
+<div class="ratings-cart text-center">
+    <div class="cart">
+        <a style="cursor:pointer;"  href="/shopping_carts/<%= @product.id %>" data-placement="left" title="Add to Cart">ADD TO CART</a>
+    </div>
+</div>
+<%end%>
+
 </div>
 
-<% if can? :manage, @product %>
-<%= link_to 'Edit', edit_product_path(@product) %>
-<% end %>
-
-<%= link_to 'Back', products_path %>
 
 
 
