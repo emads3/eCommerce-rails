@@ -96,11 +96,9 @@ ActiveRecord::Schema.define(version: 2020_05_12_002446) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "store_id"
     t.string "avatars"
-    t.integer "user_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["store_id"], name: "index_products_on_store_id"
-    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "shopping_carts", force: :cascade do |t|
@@ -125,9 +123,15 @@ ActiveRecord::Schema.define(version: 2020_05_12_002446) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_seller"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "orders", "users"
@@ -136,7 +140,6 @@ ActiveRecord::Schema.define(version: 2020_05_12_002446) do
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "stores"
-  add_foreign_key "products", "users"
   add_foreign_key "shopping_carts", "users"
   add_foreign_key "stores", "users"
 end
