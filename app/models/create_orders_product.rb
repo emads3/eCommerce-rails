@@ -1,3 +1,0 @@
-class CreateOrdersProduct < ApplicationRecord
-    
-end
