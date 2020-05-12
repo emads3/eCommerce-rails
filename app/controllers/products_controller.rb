@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
   def show
     @product=Product.find(params[:id]) 
 
+
   end
 
   # GET /products/new
@@ -29,6 +30,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    
   end
 
   # POST /products
@@ -56,6 +58,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
