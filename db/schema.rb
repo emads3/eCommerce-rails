@@ -57,17 +57,18 @@ ActiveRecord::Schema.define(version: 2020_05_12_002446) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.string "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "state"
     t.integer "user_id"
+    t.boolean "is_checked", default: false, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "product_orders", force: :cascade do |t|
     t.integer "order_id"
     t.integer "product_id"
-    t.integer "quantity"
+    t.integer "quantity", default: 1, null: false
     t.string "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -96,11 +97,9 @@ ActiveRecord::Schema.define(version: 2020_05_12_002446) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "store_id"
     t.string "avatars"
-    t.integer "user_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["store_id"], name: "index_products_on_store_id"
-    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "shopping_carts", force: :cascade do |t|
@@ -136,7 +135,6 @@ ActiveRecord::Schema.define(version: 2020_05_12_002446) do
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "stores"
-  add_foreign_key "products", "users"
   add_foreign_key "shopping_carts", "users"
   add_foreign_key "stores", "users"
 end
