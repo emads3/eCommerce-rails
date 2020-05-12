@@ -21,20 +21,24 @@ class OrdersController < ApplicationController
   def edit
   end
 
-  # POST /orders
-  # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @product_id = params[:product_id].to_i
+    return unless @product_id
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
+    # get the shopping cart of the user
+    @cart = Order.where(user_id: current_user.id, is_ckecked: false).take
+    unless @cart # there is not cart, create one
+      @cart = Order.new user_id: current_user.id, is_checked: false
+      @cart.save
     end
+    # puts YAML::dump(@cart)
+    @prod = @cart.products.find_by id: @product_id
+    if !@prod
+      @cart.products.create product_id: @product_id, quantity: 1
+    else
+      @prod.update(stock_quantity: @prod.stock_quantity + 1)
+    end
+    redirect_to
   end
 
   # PATCH/PUT /orders/1
@@ -62,13 +66,14 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def order_params
-      params.fetch(:order, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def order_params
+    params.fetch(:order, {})
+  end
 end

@@ -50,12 +50,6 @@ ActiveRecord::Schema.define(version: 2020_05_12_002446) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "categors", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "order_products", force: :cascade do |t|
     t.integer "order_id"
     t.integer "product_id"
