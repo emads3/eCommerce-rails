@@ -14,11 +14,21 @@
 						<%= link_to brand.name, brand_path(brand),:class=>"dropdown-item" %>
 					<%end%>
 				</div>
+				
 
 			  </li>
+			  
 
 	          <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="#" class="nav-link">Contact Us</a></li>
+	          <li class="nav-item">
+			  <% if user_signed_in? && current_user.is_seller == true%>
+			  		<% @allstores.each do |store| %>
+				<%=link_to "My Store",store_path(store.user_id = current_user.id) , :class=>"nav-link" %>
+					<%end%>
+
+				<%end%>
+			  
+			  </li>
 				<div class="nav-item ">
 				<% if user_signed_in? %>
 				<div class="UserHeader">

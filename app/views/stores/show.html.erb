@@ -1,0 +1,16 @@
+<% content_for :seller do %>
+
+  <div class="col-md-2 ">
+
+  <%= render "layouts/seller-side-bar"%>
+
+  </div>
+  <%= yield %>
+
+  </div>
+<% end %>
+<%= render template: "layouts/application" %>
+
+<%= link_to 'Edit', edit_store_path(@store) %> |
+<%= link_to 'Back', stores_path %>
+
