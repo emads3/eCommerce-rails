@@ -19,7 +19,7 @@
 
   <div class="carousel-inner">
       <div class="carousel-item active">
-      <img class="d-block w-100" src="<%=@product.avatars[0].url%>" alt="First slide">
+      <img class="d-block w-100" src="<%=@product.avatars[0].url if @product.avatars[0]%>" alt="First slide">
     </div>
   <% @product.avatars.drop(1).each_with_index do |avatar, i|%>
 
@@ -58,11 +58,11 @@
 <h4>Available: <span style="color:#ffa45c;"><%=@product.stock_quantity%></span></h4>
 
 <%else%>
-<h4 style="color:#ffa45c;"> <span >Out of stock</h4>
+    <h4 style="color:#ffa45c;"> <span >Out of stock</span></h4>
 <%end%>
 <p>Brand: <span style="color:#ffa45c;"><%= link_to @product.brand.name,@product.brand%></span></br>
 Store: <span style="color:#ffa45c;"><%=@product.store.name%></span>
-<p>
+</p>
 
 <% if @product.stock_quantity > 0 %>
 <div class="ratings-cart text-center">
