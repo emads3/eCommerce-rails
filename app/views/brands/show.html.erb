@@ -9,9 +9,11 @@
        <div class="product-img img-fluid" >
            
            <% product.avatars.each_with_index do |avatar, i|%>
-           <% if i == 0 %>
-           <%= image_tag(avatar.url , :class => 'avatar')%>
-           <%end%>
+                <% if i == 0 %>
+                    <a href="<%=product_path(product)%>">
+                        <%= image_tag(avatar.url , :class => 'avatar')%>
+                    </a>
+               <%end%>
            <%end%>
 
        </div>
