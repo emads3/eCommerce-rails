@@ -26,19 +26,19 @@ class OrdersController < ApplicationController
     return unless @product_id
 
     # get the shopping cart of the user
-    @cart = Order.where(user_id: current_user.id, is_ckecked: false).take
+    @cart = Order.where(user_id: current_user.id, is_checked: false).first # no need for .take ?
     unless @cart # there is not cart, create one
       @cart = Order.new user_id: current_user.id, is_checked: false
       @cart.save
     end
     # puts YAML::dump(@cart)
-    @prod = @cart.products.find_by id: @product_id
+    @prod = @cart.OrderProducts.find_by product_id: @product_id
     if !@prod
-      @cart.products.create product_id: @product_id, quantity: 1
+      @cart.OrderProducts.create product_id: @product_id, quantity: 1
     else
-      @prod.update(stock_quantity: @prod.stock_quantity + 1)
+      @prod.update(quantity: @prod.quantity + 1)
     end
-    redirect_to
+    redirect_to orders_path
   end
 
   # PATCH/PUT /orders/1
