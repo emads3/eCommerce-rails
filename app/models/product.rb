@@ -1,15 +1,17 @@
 class Product < ApplicationRecord
   mount_uploaders :avatars, AvatarUploader
   serialize :avatars, JSON
-  
+
   belongs_to :category
   belongs_to :brand
   belongs_to :store
-  belongs_to :user
+  # belongs_to :user
   has_many :product_shoppings, :dependent => :destroy
-  has_many :product_orders, :dependent => :destroy
-  has_many :orders, :through => :product_orders
 
+  # example
+  # Order.first.OrderProducts[0].quantity
+  has_many :OrderProducts, :dependent => :destroy
+  has_many :orders, :through => :OrderProducts
 
   has_many :shopping_carts, :through => :product_shoppings
   has_many :product_imgs

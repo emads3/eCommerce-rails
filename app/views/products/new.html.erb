@@ -1,6 +1,13 @@
 <h1>New Product</h1>
 <% if can? :manage, @product %>
-<%= render 'form', product: @product %>
+  <%= render 'form', product: @product %>
+<% else %>
+  <h3 class="alert alert-danger">You don't have permission to be add products, Contact admin to make you a seller for a
+    store</h3>
+  <h4>Redirecting you in 5 seconds..</h4>
+  <script>
+      setTimeout(() => window.location.href = "<%= products_path %>", 5000);
+  </script>
 <% end %>
 
 <%= link_to 'Back', products_path %>

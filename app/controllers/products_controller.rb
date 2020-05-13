@@ -16,15 +16,13 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @product=Product.find(params[:id]) 
+    @product = Product.find(params[:id])
 
 
   end
 
   # GET /products/new
   def new
-    current_user = User.find_by_id(session[:user_id])
-
     @product = Product.new
   end
 
@@ -36,7 +34,8 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    current_user = User.find_by_id(session[:user_id])
+    # @current_user = User.find_by_id(session[:user_id])
+
 
     authorize! :manage, @product
 
@@ -81,14 +80,15 @@ class ProductsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_product
-      @product = Product.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def product_params
-      # params.fetch(:product, {})
-         params.require(:product).permit(:title, :description,:category_id,:store_id,:user_id ,:brand_id,:price, :stock_quantity,{avatars: []})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def product_params
+    params.require(:product).permit(:title, :description, :category_id, :store_id,
+                                    :brand_id, :price, :stock_quantity, {avatars: []})
+  end
 end

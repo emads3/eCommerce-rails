@@ -1,14 +1,14 @@
 
  <div class="row mb-2 products">
- 
+
 
  <% @products.each do |product| %>
- 
+
 <div class="card-container">
     <div class="single-product-wrapper">
         <!-- Product Image -->
         <div class="product-img img-fluid" >
-            
+
 
             <a href="<%=product_path(product)%>">
             <%= image_tag(product.avatars[0].url , :class => 'avatar')%>
@@ -22,7 +22,7 @@
             <!-- Product Meta Data -->
             <div class="product-meta-data">
 
-                
+
                 <div class="line"></div>
                 <p class="product-price"> <%= product.price %> <span style="font-size:17px;color:#ffa45c">$<span></span></span></p>
                 <div class="product-name"><%= product.title %></div>
@@ -33,6 +33,8 @@
             <div class="ratings-cart text-right">
                 <div class="cart">
                     <a style="cursor:pointer;"  href="/shopping_carts/<%= product.id %>" data-placement="left" title="Add to Cart"><%= image_tag ("bag.png")%></a>
+                    <%#= link_to 'add to cart', '/orders/', method: :post, product_id: product_id %>
+                    <%= link_to 'add to cart', orders_path(:product_id => product.id), method: :post %>
                 </div>
             </div>
             <%end%>
