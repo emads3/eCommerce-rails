@@ -16,6 +16,7 @@ class ShoppingCartsController < ApplicationController
             end
         end
         # @shopping_carts = ShoppingCart.order(:name).page(params[:page]).per(5)
+        @total= 0
         @shopping_carts =ShoppingCart.where("user_id == ?", current_user.id).order(:name).page(params[:page]).per(5)
     end  
  
@@ -32,6 +33,7 @@ class ShoppingCartsController < ApplicationController
         redirect_to action: 'show'
     end   
     def show
+        @total= 0
         @shopping_cart=ShoppingCart.find_by user_id: current_user.id 
     end    
       

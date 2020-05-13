@@ -11,12 +11,20 @@
 
   <body>
     <%= render "layouts/header" %>
+      
+      
+      <% if content_for(:seller)%>
+      <%=  yield(:seller)%>
+      <%else%>
+
+    <%= render "layouts/carousel"%>
+
+
+
+
+
     <div class="container-fluid">
       <div class="row">
-
-  <% if content_for(:seller)%>
-  <%=  yield(:seller)%>
-  <%else%>
 
       <div class="col-md-2 ">
         
