@@ -41,11 +41,11 @@
                                         <div class="qty-btn d-flex">
                                             <p>Qty</p>
                                             <div class="quantity">
-                                                <input type="number" class="qty-text" id="qty" step="1" min = "0"  max= <%=product.stock_quantity%> name="quantity" value="1">
+                                                <input type="number" class="qty-text" id="qty" step="1" min = "1"  max= <%=product.stock_quantity%> name="quantity" value= <%=  @shop.quantity  %> >
                                                 <a href="/shopping_carts/destroy/<%=product.id%>">delete</a>
-                                        
-                                                    <% @total += product.price %>
-                                               
+                                              
+                                                <% @total += product.price * @shop.quantity %>
+  
                                             </div>
                                         </div>
                                     </td>
