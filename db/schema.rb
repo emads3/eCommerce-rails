@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_12_002446) do
+ActiveRecord::Schema.define(version: 2020_05_13_024353) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -50,17 +50,6 @@ ActiveRecord::Schema.define(version: 2020_05_12_002446) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "order_products", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "product_id"
-    t.integer "quantity", default: 1, null: false
-    t.string "state"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "index_order_products_on_order_id"
-    t.index ["product_id"], name: "index_order_products_on_product_id"
-  end
-
   create_table "orders", force: :cascade do |t|
     t.string "state"
     t.datetime "created_at", precision: 6, null: false
@@ -70,9 +59,11 @@ ActiveRecord::Schema.define(version: 2020_05_12_002446) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "orders_products", id: false, force: :cascade do |t|
+  create_table "orders_products", force: :cascade do |t|
     t.integer "order_id"
     t.integer "product_id"
+    t.integer "quantity", default: 1, null: false
+    t.string "product_seller_confirmation_state", default: "1", null: false
     t.index ["order_id"], name: "index_orders_products_on_order_id"
     t.index ["product_id"], name: "index_orders_products_on_product_id"
   end
@@ -131,6 +122,8 @@ ActiveRecord::Schema.define(version: 2020_05_12_002446) do
   end
 
   add_foreign_key "orders", "users"
+  add_foreign_key "orders_products", "orders"
+  add_foreign_key "orders_products", "products"
   add_foreign_key "product_shoppings", "products"
   add_foreign_key "product_shoppings", "shopping_carts"
   add_foreign_key "products", "brands"
