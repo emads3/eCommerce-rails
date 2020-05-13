@@ -52,10 +52,10 @@ ActiveRecord::Schema.define(version: 2020_05_13_024353) do
 
   create_table "orders", force: :cascade do |t|
     t.string "state"
+    t.boolean "is_checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.boolean "is_checked", default: false, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
