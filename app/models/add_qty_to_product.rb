@@ -1,2 +1,0 @@
-class AddQtyToProduct < ApplicationRecord
-end
