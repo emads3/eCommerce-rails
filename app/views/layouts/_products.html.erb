@@ -33,6 +33,8 @@
             <div class="ratings-cart text-right">
                 <div class="cart">
                     <a style="cursor:pointer;"  href="/shopping_carts/<%= product.id %>" data-placement="left" title="Add to Cart"><%= image_tag ("bag.png")%></a>
+                </div>    
+                <div >
                     <%#= link_to 'add to cart', '/orders/', method: :post, product_id: product_id %>
                     <%= link_to 'add to cart', orders_path(:product_id => product.id), method: :post %>
                 </div>

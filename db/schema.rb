@@ -50,11 +50,16 @@ ActiveRecord::Schema.define(version: 2020_05_13_024353) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.string "state"
-    t.boolean "is_checked", default: false, null: false
+  create_table "categors", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "state"
     t.integer "user_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -66,6 +71,17 @@ ActiveRecord::Schema.define(version: 2020_05_13_024353) do
     t.string "product_seller_confirmation_state", default: "1", null: false
     t.index ["order_id"], name: "index_orders_products_on_order_id"
     t.index ["product_id"], name: "index_orders_products_on_product_id"
+  end
+
+  create_table "product_orders", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "product_id"
+    t.integer "quantity"
+    t.string "state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_product_orders_on_order_id"
+    t.index ["product_id"], name: "index_product_orders_on_product_id"
   end
 
   create_table "product_shoppings", force: :cascade do |t|

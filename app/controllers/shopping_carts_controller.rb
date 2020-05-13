@@ -16,7 +16,10 @@ class ShoppingCartsController < ApplicationController
 
                     @shop=@shopping_cart.product_shoppings.create(:product_id => params[:product] , :quantity => 1)      
                 else
-                    @shop.quantity = @shop.quantity+1
+                    if @product.stock_quantity > @shop.quantity
+                        @shop.quantity = @shop.quantity+1
+                        @shop.save
+                    end
                 end                
             end
         end
