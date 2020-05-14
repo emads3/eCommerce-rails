@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     current_user = User.find_by_id(session[:current_user_id])
 
     # @products = Product.all
-    @products = Product.order(:name).page(params[:page]).per(10)
+    @products = Product.order(:title).page(params[:page]).per(10)
     # authorize! :manage, @products
 
   end
@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    
+
   end
 
   # POST /products
@@ -57,7 +57,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    
+
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
