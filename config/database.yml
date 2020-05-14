@@ -7,7 +7,7 @@
 default: &default
   adapter: postgresql
 #  port: 5433
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: 5
   timeout: 5000
 
 development:
@@ -25,7 +25,7 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: <%= ENV('DATABASE_URL') %>
-#  username: 3m4d
-#  password: <%#= ENV['TEST_PG_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  database: my_database_production
+  pool: 5
+  timeout: 5000
