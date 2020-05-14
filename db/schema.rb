@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 2020_05_13_024353) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
@@ -55,13 +58,13 @@ ActiveRecord::Schema.define(version: 2020_05_13_024353) do
     t.boolean "is_checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "orders_products", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "product_id"
+    t.bigint "order_id"
+    t.bigint "product_id"
     t.integer "quantity", default: 1, null: false
     t.string "product_seller_confirmation_state", default: "1", null: false
     t.index ["order_id"], name: "index_orders_products_on_order_id"
@@ -69,8 +72,8 @@ ActiveRecord::Schema.define(version: 2020_05_13_024353) do
   end
 
   create_table "product_shoppings", force: :cascade do |t|
-    t.integer "shopping_cart_id"
-    t.integer "product_id"
+    t.bigint "shopping_cart_id"
+    t.bigint "product_id"
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -83,11 +86,11 @@ ActiveRecord::Schema.define(version: 2020_05_13_024353) do
     t.text "description"
     t.decimal "price"
     t.integer "stock_quantity"
-    t.integer "category_id"
-    t.integer "brand_id"
+    t.bigint "category_id"
+    t.bigint "brand_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "store_id"
+    t.bigint "store_id"
     t.string "avatars"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
@@ -95,7 +98,7 @@ ActiveRecord::Schema.define(version: 2020_05_13_024353) do
   end
 
   create_table "shopping_carts", force: :cascade do |t|
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_shopping_carts_on_user_id"
@@ -104,7 +107,7 @@ ActiveRecord::Schema.define(version: 2020_05_13_024353) do
   create_table "stores", force: :cascade do |t|
     t.string "name"
     t.text "summary"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_stores_on_user_id"
@@ -116,15 +119,9 @@ ActiveRecord::Schema.define(version: 2020_05_13_024353) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "is_seller"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "orders", "users"
