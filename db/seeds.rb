@@ -8,13 +8,25 @@
 AdminUser.create!(email: 'nouran@yahoo.com', password: '987*654*321', password_confirmation: '987*654*321') if Rails.env.development?
 AdminUser.create!(email: 'e@emads3.com', password: '123123123', password_confirmation: '123123123') if Rails.env.development?
 
-# User.create(email: 'emad.fcis@gmail.com', encrypted_password: '123123123', created_at: '2020-05-13 03:45:15.000', updated_at: '2020-05-13 03:45:15.000')
+%w[Adidas Samsung Apple].each { |brand| Brand.create(name: brand) }
 
-Brand.create(name: 'Adidas') if Rails.env.development?
-Brand.create(name: 'Samsung') if Rails.env.development?
+['Electrical Devices', 'Mobile Devices', 'Computers And Accessories'].each do |cat|
+  Category.create(name: cat)
+end
 
-Category.create(name: 'Electrical Devices')
-Category.create(name: 'Mobile Devices')
-Category.create(name: 'Computers And Accessories')
+user1 = User.new
+user1.email = 'e@emads3.com'
+user1.password = '123123123'
+user1.is_seller = true
+user1.save!
 
-# Store.create
+user2 = User.new
+user2.email = 'emad.fcis@gmail.com'
+user2.password = '123123123'
+user2.save!
+
+
+['Modern Home', 'SOUQ', 'Furniture Store', 'Select Mobile', '2B', 'Tradeline'].each do
+|store|
+  Store.create(name: store, user_id: [user1.id, user2.id].sample)
+end
