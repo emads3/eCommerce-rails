@@ -26,6 +26,6 @@ test:
 
 production:
   <<: *default
-  database: postgres_products
-  username: 3m4d
-  password: <%= ENV['TEST_PG_DATABASE_PASSWORD'] %>
+  database: <%= ENV('DATABASE_URL') %>
+#  username: 3m4d
+#  password: <%#= ENV['TEST_PG_DATABASE_PASSWORD'] %>
