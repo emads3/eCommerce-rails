@@ -11,13 +11,18 @@ Rails.application.routes.draw do
   get 'shopping_carts/:product' , to:'shopping_carts#index'
   get 'shopping_carts/destroy/:product' , to:'shopping_carts#destroy'
   get 'shopping_carts/create' , to:'shopping_carts#create'
-  
+
   resources :categories
   resources :brands
   resources :products
   resources :orders
   resources :stores
- 
+
+  post 'cart', to: 'cart#create'
+  get 'cart', to: 'cart#show'
+  delete 'cart', to: 'cart#destroy'
+  # no cart destroy, there's always a cart even if empty one
+
   root 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
