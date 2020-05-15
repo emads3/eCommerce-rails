@@ -4,7 +4,7 @@ class CreateOrdersProducts < ActiveRecord::Migration[6.0]
       t.references :order, foreign_key: true
       t.references :product, foreign_key: true
       t.integer :quantity, { null: false, default: 1 }
-      t.string :product_seller_confirmation_state, { null: false, default: 1 }
+      t.string :product_seller_confirmation_state, { null: false, default: 0 }
     end
   end
 end
