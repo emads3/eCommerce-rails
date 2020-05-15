@@ -15,12 +15,14 @@ AdminUser.create!(email: 'e@emads3.com', password: '123123123', password_confirm
 end
 
 user1 = User.new
+user1.name = 'Emad S.'
 user1.email = 'e@emads3.com'
 user1.password = '123123123'
 user1.is_seller = true
 user1.save!
 
 user2 = User.new
+user2.name = 'Omda '
 user2.email = 'emad.fcis@gmail.com'
 user2.password = '123123123'
 user2.save!
