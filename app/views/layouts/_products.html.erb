@@ -31,9 +31,14 @@
             <!-- Cart -->
             <% if product.stock_quantity > 0 %>
             <div class="ratings-cart text-right">
+            <div class="cart">
+            <a style="cursor:pointer;"  href="/shopping_carts/<%= product.id %>" data-placement="left" title="Add to Cart"><%= image_tag ("bag.png")%></a>
+            </div>  
                 <div class="cart">
-                  <%= link_to image_tag('bag.png'), cart_path(:product_id => product.id), {method: :post, style: 'cursor:pointer'} %>
+                  <%= link_to 'add_to_order', cart_path(:product_id => product.id), {method: :post, style: 'cursor:pointer'} %>
                 </div>
+               
+           
             </div>
             <%end%>
         </div>
