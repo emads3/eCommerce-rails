@@ -1,4 +1,5 @@
 class CartController < ApplicationController
+  before_action :authenticate_user!
 
   # todo : handle if the user added item to the cart and there is not enough stock quantity
   # no index methdd, only show (no view for 'carts', but view for single 'cart')
