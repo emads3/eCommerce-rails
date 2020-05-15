@@ -34,7 +34,7 @@
                     Description: <h6><%= cart_item.product.description %></h6>
                     Category: <h6><%= cart_item.product.category.name %></h6>
                     Brand: <h6><%= cart_item.product.brand.name %></h6>
-                    Seller: <h6><%= cart_item.product.store.user.email %></h6>
+                    Seller: <h6><%= cart_item.product.store.user.name %></h6>
                   </td>
                   <td class="price">
                     <span><%= cart_item.product.price %>$</span>
@@ -67,7 +67,7 @@
 
           </ul>
           <div class="cart-btn mt-100">
-            <a href="cart.html" class="btn amado-btn w-100">Checkout</a>
+            <%= link_to 'Checkout', order_path(@cart.id), method: :put, class: 'btn amado-btn w-100'  %>
           </div>
         </div>
 

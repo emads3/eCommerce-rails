@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   delete 'cart', to: 'cart#destroy'
   # no cart destroy, there's always a cart even if empty one
 
+  resources :orders, only: %i[index show update]
+  # get 'orders/:order_id', to: 'order#new'
+
   root 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
