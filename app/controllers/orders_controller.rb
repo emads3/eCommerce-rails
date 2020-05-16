@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.where(is_checked: true)
   end
 
   # GET /orders/1
@@ -32,11 +32,11 @@ class OrdersController < ApplicationController
       @cart.save
     end
     # puts YAML::dump(@cart)
-    @prod = @cart.OrderProducts.find_by product_id: @product_id
-    if !@prod
+    @cart_item = @cart.OrderProducts.find_by product_id: @product_id
+    if !@cart_item
       @cart.OrderProducts.create product_id: @product_id, quantity: 1
     else
-      @prod.update(quantity: @prod.quantity + 1)
+      @cart_item.update(quantity: @cart_item.quantity + 1)
     end
     redirect_to orders_path
   end
