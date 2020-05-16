@@ -1,45 +1,49 @@
-  
 <div class="row mb-2 products">
-<% if @category.products%>
-<% @category.products.each do |product| %>
+  <% if @category.products %>
+    <% @category.products.each do |product| %>
 
-<div class="card-container">
-   <div class="single-product-wrapper">
-       <!-- Product Image -->
-       <div class="product-img img-fluid" >
-           
-            <a href="<%=product_path(product)%>">
-                <%= image_tag(product.avatars[0].url, :class => 'avatar')%>
+      <div class="card-container">
+        <div class="single-product-wrapper">
+          <!-- Product Image -->
+          <div class="product-img img-fluid">
+
+            <a href="<%= product_path(product) %>">
+              <% if product.avatars.count > 0 %>
+                <%= image_tag(product.avatars[0].url, :class => 'avatar') %>
+              <% else %>
+                <%= image_tag 'no_image_available.jpg', width: 300, height: 350 %>
+              <% end %>
             </a>
 
-       </div>
+          </div>
 
-       <!-- Product Description -->
-       <div class="product-description d-flex align-items-center justify-content-between">
-           <!-- Product Meta Data -->
-           <div class="product-meta-data">
+          <!-- Product Description -->
+          <div class="product-description d-flex align-items-center justify-content-between">
+            <!-- Product Meta Data -->
+            <div class="product-meta-data">
 
-               
-               <div class="line"></div>
-               <p class="product-price"> <%= product.price %> <span style="font-size:17px;color:#ffa45c">$<span></span></span></p>
-               <div class="product-name"><%= product.title %></div>
 
-           </div>
-           <!-- Cart -->
-           <div class="ratings-cart text-right">
-               <div class="cart">
-                   <a style="cursor:pointer;"  href="/shopping_carts/<%= product.id %>" data-placement="left" title="Add to Cart"><%= image_tag ("bag.png")%></a>
-               </div>
-           </div>
-       </div>
-   </div>
-</div>
-<% end %>
-<% end %>
+              <div class="line"></div>
+              <p class="product-price"> <%= product.price %>
+                <span style="font-size:17px;color:#ffa45c">$<span></span></span></p>
+              <div class="product-name"><%= product.title %></div>
+
+            </div>
+            <!-- Cart -->
+            <div class="ratings-cart text-right">
+              <div class="cart">
+                <a style="cursor:pointer;" href="/shopping_carts/<%= product.id %>" data-placement="left" title="Add to Cart"><%= image_tag ("bag.png") %></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 
 </div>
 <div class="row paginator">
-<%= paginate @products %>
+  <%= paginate @products %>
 </div>
 
 
