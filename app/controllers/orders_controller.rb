@@ -1,10 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
     redirect_to 'home#index' unless user_signed_in?
-    @orders = OrderWithPrice.where(is_checked: true, user_id: current_user.id)
+    @orders = OrderWithPrice.where(is_checked: true, user_id: current_user.id).order(id: :desc)
 
     @orders.each_with_index do |order, i|
       @orders[i].state = accessor_order_state order
@@ -14,8 +13,18 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new(params[:order_id])
+    @cart = Order.where(is_checked: false, user_id: current_user.id).first
+    # there is order
+    redirect_to cart, notice: 'There is no products in your cart to checkout' unless @cart
+
+    # @order = Order.new(is_checked: false, user_id: current_user.id)
+    if @cart.OrderProducts.count.positive? # items in cart > 0
+      render :new
+    else
+      redirect_to @cart, notice: 'you don\'t have any items in your cart to checkout'
+    end
   end
+
 
   def show
     Order.where(is_checked: true, user_id: current_user.id, id: params[:id])
@@ -23,22 +32,16 @@ class OrdersController < ApplicationController
   end
 
   def update
-    Order.find(params[:id]).update(is_checked: true)
+    Order.where(id: params[:id], is_checked: false, user_id: current_user.id).first.update(place_order_params)
     redirect_to orders_path, notice: 'successfully made a an order, check the order status periodically.'
   end
 
 
   private
 
-  # fixme: remove this two methods
-  # Use callbacks to share common setup or constraints between actions.
-  def set_order
-    @order = Order.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
-  def order_params
-    params.fetch(:order, {})
+  def place_order_params
+    #  is_checked: true, params.require(:cart).require[:billing_address, :shipping_address]
+    params.require(:order).permit(:billing_address, :shipping_address).merge(is_checked: true)
   end
 
   def accessor_order_state(order)

@@ -1,5 +1,59 @@
-<h1>New Order</h1>
+<%#= @cart.inspect %>
+<h1><b>Order Details</b></h1>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <td>Product</td>
+    <td>Price</td>
+    <td>Quantity</td>
+    <td>Total Price</td>
+  </tr>
+  </thead>
+  <tbody>
+  <% total_order_price = 0 %>
+  <% @cart.OrderProducts.each do |order_item| %>
+    <tr>
+      <td><%= order_item.product.title %></td>
+      <td><%= order_item.product.price %></td>
+      <td><%= order_item.quantity %></td>
+      <td><%= order_item.quantity * order_item.product.price %></td>
+    </tr>
+    <% total_order_price += order_item.quantity * order_item.product.price %>
+  <% end %>
+  </tbody>
+  <tfoot>
+  <tr>
+    <td colspan="3"></td>
+    <td>Total: <%= total_order_price %></td>
+  </tr>
+  </tfoot>
+</table>
 
-<%= render 'form', order: @order %>
+<%= form_with(model: @cart, local: true) do |form| %>
+  <% if @cart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this order from being checkedout:</h2>
+      <ul>
+        <% @cart.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :shipping_address %>
+    <%= form.text_field :shipping_address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :billing_address %>
+    <%= form.text_field :billing_address %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Place Your Order' %>
+  </div>
+<% end %>
 
 <%= link_to 'Back', orders_path %>
