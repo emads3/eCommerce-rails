@@ -14,8 +14,8 @@ class OrdersController < ApplicationController
 
   def new
     @cart = Order.where(is_checked: false, user_id: current_user.id).first
-    # there is order
-    redirect_to cart, notice: 'There is no products in your cart to checkout' unless @cart
+    # there is no order
+    redirect_to(cart_path, notice: 'There is no products in your cart to checkout') unless @cart
 
     # @order = Order.new(is_checked: false, user_id: current_user.id)
     if @cart.OrderProducts.count.positive? # items in cart > 0
