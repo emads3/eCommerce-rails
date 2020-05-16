@@ -11,7 +11,12 @@
 
 
             <a href="<%=product_path(product)%>">
-            <%= image_tag(product.avatars[0].url , :class => 'avatar')%>
+              <% if product.avatars.count > 0 %>
+                <%= image_tag(product.avatars[0].url, :class => 'avatar') %>
+              <% else %>
+                <img class="avatar" src="https://www.nsenergybusiness.com/wp-content/themes/goodlife-wp-child/assets/img/no_image_available.jpg" />
+
+              <% end %>
             </a>
 
 
