@@ -39,21 +39,11 @@
   <h4>Select Category</h4>
   <%= form.collection_select :category_id, Category.all, :id, :name, prompt: "Select Category" %>
 
-<%# <<<<<<<<<this is just for basic entry,it needs to be handeled
- to give the product current user store name >>>>>>>>>>>%>
-
   <h4>Select Store</h4>
-
   <%= form.collection_select :store_id, Store.all, :id, :name, prompt: "Select Store" %>
   <h4>Select Brand</h4>
 
   <%= form.collection_select :brand_id, Brand.all, :id, :name, prompt: "Select Brand" %>
-<%# <%= form.collection_select :user_id, User.where.not(is_seller: [ ""]) , :id, :email, prompt: "Select Seller"%>
-  <h4>Select Seller</h4>
-
-  <%#= form.collection_select :user_id, User.all, :id, :email, prompt: "Select Seller" %>
-  <%# <% form.hidden_field(:hidden_value, :value=> session[:current_user_id] )%>
-
 
   <div class="actions">
     <%= form.submit %>
